@@ -1,7 +1,7 @@
 export {};
 import { token } from "./token.ts";
 
-class Character {
+export class Character {
   constructor(
     private _id: string,
     public name: string,
@@ -20,7 +20,7 @@ const headers = {
   Authorization: `${token}`,
 };
 
-const loadCharacters = async (n: number) => {
+export const loadCharacters = async (n: number) => {
   const response = await fetch("https://the-one-api.dev/v2/character", {
     headers: headers,
   });
@@ -51,4 +51,4 @@ const loadCharacters = async (n: number) => {
 };
 
 const characters: Array<Character> = await loadCharacters(60);
-console.log(characters);
+//console.log(characters);
