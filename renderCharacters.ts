@@ -1,4 +1,6 @@
 import { Character } from "./characters.ts";
+import { renderCharacter } from "./renderCharacter.ts";
+import { writeFile } from "fs/promises";
 
 const head = (title: string) => `
 <head>
@@ -8,12 +10,18 @@ const head = (title: string) => `
   <title>${title}</title>
 <head>`;
 
+let generateFile = (character: Character, n: number) => {
+    const html = renderCharacter(character);
+    writeFile(`character${n}.html`, html);
+    return `character${n}.html`;
+}
+
 const renderCharacters = (characters: Array<Character>) => {
     let bodyContent= "";
-    let num = 1;
+    let num: number = 1;
     characters.forEach(character => {
         bodyContent += `<div class="character">
-        <pre>${num}. ${character.name}</pre>
+        <a target="_black" href="${generateFile(character, num)}">${num}. ${character.name}</a>
         </div>`;
         num ++;
     });
