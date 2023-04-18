@@ -3,8 +3,8 @@
     "lib": [
       "ESNext"
     ],
-    "module": "esnext",
-    "target": "esnext",
+    "module": "Esnext",
+    "target": "Esnext",
     "moduleResolution": "nodenext",
     "strict": true,
     "downlevelIteration": true,
@@ -12,6 +12,8 @@
     "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
     "allowJs": true,
     "types": [
       "bun-types" // add Bun global
