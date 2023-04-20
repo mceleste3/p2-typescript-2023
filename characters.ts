@@ -1,5 +1,7 @@
 export {};
-import { token } from "./token.ts";
+import * as dotenv from 'dotenv'
+
+dotenv.config();
 
 export class Character {
   constructor(
@@ -17,7 +19,7 @@ export class Character {
 
 const headers = {
   Accept: "application/json",
-  Authorization: `Bearer ${token}`,
+  Authorization: `Bearer ${process.env.TOKEN}`,
 };
 
 export const loadCharacters = async (n: number) => {
@@ -50,6 +52,6 @@ export const loadCharacters = async (n: number) => {
   return characters;
 };
 
-const characters: Array<Character> = await loadCharacters(60);
-console.log(characters);
-console.log(process.env.LOGNAME);
+const characters: Array<Character> = await loadCharacters(6);
+//console.log(characters);
+
