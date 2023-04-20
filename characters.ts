@@ -17,7 +17,7 @@ export class Character {
 
 const headers = {
   Accept: "application/json",
-  Authorization: `${token}`,
+  Authorization: `Bearer ${token}`,
 };
 
 export const loadCharacters = async (n: number) => {
@@ -51,4 +51,5 @@ export const loadCharacters = async (n: number) => {
 };
 
 const characters: Array<Character> = await loadCharacters(60);
-//console.log(characters);
+console.log(characters);
+console.log(process.env.LOGNAME);
