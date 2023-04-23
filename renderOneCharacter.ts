@@ -56,17 +56,21 @@ const head = (title: string) => `
             height: 60%;
             width: 50%;
             }
+
+            footer{
+                height: 10rem;
+            }
     </style>
   <head>`;
 
-export const renderCharacter = (character: Character) => {
+export const renderOneCharacter = (character: Character) => {
     return `
 <html>
     ${head(character.name)}
     <body>
-      <header>
+        <header>
           <h1>The Lord of the Rings: Characters</h1>
-          <img src="ring.png" height="45px" width="60px">
+          <img src="../ring.png" height="45px" width="60px">
         </header>
         
         <h2>${character.name}</h2>
@@ -98,6 +102,8 @@ export const renderCharacter = (character: Character) => {
         </div>  
         <p>You can see more information of the character in this web:</p>
         <iframe src="${character.wikiUrl}"></iframe>
+        <footer>
+        </footer>
     </body>
 </html>`;
 };

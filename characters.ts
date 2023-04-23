@@ -52,6 +52,6 @@ export const loadCharacters = async (n: number) => {
   return characters;
 };
 
-const characters: Array<Character> = await loadCharacters(6);
+//const characters: Array<Character> = await loadCharacters(6);
 //console.log(characters);
 

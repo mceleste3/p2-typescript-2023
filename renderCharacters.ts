@@ -1,6 +1,6 @@
 import { Character } from "./characters.ts";
-import { renderCharacter } from "./renderCharacter.ts";
-import { writeFile } from "fs/promises";
+import { renderOneCharacter } from "./renderOneCharacter.ts";
+import { writeFile, mkdir } from "fs/promises";
 
 export const header_body: string = `
             body{
@@ -25,7 +25,7 @@ export const header_body: string = `
             img{
                 margin-left: 0.7rem;
                 margin-top: 1rem;
-            }`
+            }`;
 
 const head = (title: string) => `
     <head>
@@ -60,15 +60,26 @@ const head = (title: string) => `
         </style>
     <head>`;
 
+
+let generateFolder = async () => {
+    let folder : string = "characters_files";
+    try{
+        await mkdir(folder);
+        console.log("characters files folder create");
+    }
+    catch (error){console.log("characters files folder exists");}
+}
+
 let generateFile = (character: Character, n: number) => {
-    const html = renderCharacter(character);
-    writeFile(`character${n}.html`, html);
-    return `character${n}.html`;
+    const html = renderOneCharacter(character);
+    writeFile(`./characters_files/character${n}.html`, html);
+    return `./characters_files/character${n}.html`;
 }
 
 const renderCharacters = (characters: Array<Character>) => {
     let bodyContent= "";
     let num: number = 1;
+    generateFolder();
     characters.forEach(character => {
         bodyContent += `<a class="character" target="_blank" href="${generateFile(character, num)}">
             ${num}. ${character.name}

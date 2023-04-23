@@ -168,8 +168,6 @@ dist
 .yarn/install-state.gz
 .pnp.\*
 
-# pauek
-users.html
-
 # celeste
-*.html
+characters.html
+characters_files
